@@ -1,3 +1,5 @@
+var exResource = require('./resource');
+
 var ex = module.exports = function expresto (app) {
 
   app.use(function exMiddleware (req, res, next) {
@@ -5,7 +7,11 @@ var ex = module.exports = function expresto (app) {
     next();
   });
 
-  var self = {};
+  var self = {
+    resource: exResource(app)
+  };
+
+  return self;
 
 };
 
